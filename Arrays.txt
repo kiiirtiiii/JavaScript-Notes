@@ -1,0 +1,145 @@
+-------------------------------------- Declaration of Array --------------------------------------
+
+# Heterogeneous
+
+	1. By Object literal - var arr = [];   (Try to use this more often)
+
+	2. Array Constructor - new array();
+
+	3. Array(3).fill(0); => [0, 0, 0]
+
+
+
+-------------------------------------- Basics Built in array functions --------------------------------------
+
+1. Array.from() :-
+	
+	console.log(Array.from("abc")); => ["a","b","c"]
+
+
+2. Array.prototype.join() :-
+	
+	var arr = ["k", "i", "r", "t", "i"];
+	
+	console.log(arr.join()); => k,i,r,t,i
+	console.log(arr.join("")); => kirti
+
+
+3. Array.prototype.includes() :-
+	
+	console.log(arr.includes("k")); => "true"
+
+
+4. Array.prototype.push() :-   # Mutates the array.
+	
+	console.log(arr.push("s")); => ["k", "i", "r", "t", "i", "s"]
+
+
+5. Array.prototype.concat() :-   # Doesn't Mutate the array.
+	
+	const arr_new = arr.concat("xyz");
+
+	console.log(arr); => ["k", "i", "r", "t", "i"]
+	console.log(arr_new); => ["k", "i", "r", "t", "i", "xyz"]
+
+
+6. Array.prototype.splice() :-   # Mutates the array.
+		
+	var months = ['Jan', 'March', 'April', 'June'];
+	
+	# Adding :
+		months.splice(1, 0, 'Feb');   // insert at index 1 ; 0 means don't want to delete any thing.
+
+		console.log(months) => ['Jan', 'Feb', 'March', 'April', 'June']
+
+		months.splice(4, 1, 'May');   // 1 means delete the value at position 4
+		console.log(months) => ['Jan', 'Feb', 'March', 'April', 'May']
+
+	# Deleting :
+		console.log(months.splice(2, 1)); => ['Jan', 'Feb', 'April', 'May']
+
+		console.log(months.splice(2, 2)); => ['Jan', 'Feb', 'May']   # from 2 upto 2 place.
+	
+
+7. Array.prototype.slice() :-   # Doesn't Mutate the array.
+		
+	const m2 = months.slice(2, 4);   //slice(start_index, end_index)
+	
+	console.log(months); => ["Jan", "Feb", "March", "April", "May"]
+
+	console.log(m2); => ["March", "April"]
+	console.log(months.slice(-1)); => ["May"]
+	console.log(months.slice(-2)); => ["April", "May"]
+
+
+8. Array.prototype.shift() :-   # Mutates the array.
+								# Deleting Elements from Beggining of the array.
+
+	var fruits = ["Mango", "Banana", "Papaya", "Kiwi"];
+	fruits.shift();
+	console.log(fruits); => ["Banana", "Papaya", "Kiwi"]
+
+
+9. Array.prototype.unshift() :-		# Mutates the array.
+									# Adding Elements in the Beginning of an array.
+
+	console.log(fruits.unshift("Mango", "Apple")); => ["Mango", "Apple", "Banana", "Papaya", "Kiwi"]
+
+
+10. Array.prototype.every() :-
+	
+	console.log(fruits.every(f => f.length < 5)); => "false"
+	console.log(fruits.every(f => f.length >= 4)); => "true"
+
+
+
+-------------------------------------- 2-D Array --------------------------------------
+
+var matrix = [[]];
+matrix =[[1, 2, 3, 4], 
+	 [5, 6, 7, 8],
+	 [9, 10, 11, 12],
+	 [13, 14, 15, 16]];
+
+let i, j;
+
+for(i=0; i<matrix.length; i++) {
+	for(j=0; j<matrix[i].length; j++) {
+		console.log(matrix[i][j])
+	}
+}
+
+OUTPUT: 1
+		2
+		3
+		4
+		5
+		6
+		7
+		8
+		9
+		10
+		11
+		12
+		13
+		14
+		15
+		16
+
+
+### TRANSPOSE OF A MATRIX : 
+
+let tmp;
+
+for(i = 0; i < matrix.length; i++) {
+	for(j = 0: j < i; j++) {
+		tmp = arr[i][j];
+		matrix[i][j] = matrix[j][i];
+		matrix[j][i] = tmp;
+	}
+}
+
+console.log(matrix); => [1, 5, 9, 13]
+			[2, 6, 10, 14]
+			[3, 7, 11, 15]
+			[4, 8, 12, 16]

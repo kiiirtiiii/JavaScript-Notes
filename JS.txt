@@ -1,0 +1,163 @@
+-------------------------------------- JavaScript Basics --------------------------------------
+
+VARIABLE : 
+	
+	1. var var_name; - variable, function scope & Hoisting
+		Hoisting : automatically reaggrange, eg- if you give value of "a" before and then declare "a", still it'll not give an error. 
+
+	2. let var_name; -	variable, block scope & no-Hoisting
+
+	3. const var_name; - constant, block scope & no-Hoisting
+
+
+
+DATA TYPES : "typeof data_type_name"
+	
+	1. Boolean - true, false
+
+	2. Undefined and null - var temp; : typeof temp = "object"
+
+	3. Number - int, float - to differentiate b/w int and float : Number.isInteger(data_type_name)
+
+	4. String -  var a = "kirti"
+
+	5. Object - It's a compoud value and it's a group of key value pairs.
+				
+				var marks = {"maths":90, "history":70, "geography":67}
+
+				=> typeof marks = "object"
+				=> marks.maths = 90  (dot notation)
+				=> marks["maths"] = 90  (array notation)
+
+				suppose, var subject = "maths"
+
+				=> marks.subject = "undefined"
+				=> marks["subject"] = "undefined"
+				=> marks[subject] = 90
+	
+	6. Symbol - 1. It's value represent a unique identifier.
+				2. Helps in maintaining Data Privacy.
+				3. Prevents Collision.
+				4. Used inside classes to make private methods.
+
+				Syntax : Symbol(Description)   (Description is optional)
+
+				let name1 = Symbol();
+				let name2 = Symbol();
+				
+				=> console.log(name1 == name2) : "false"
+
+			Used Case :
+
+			1. Uniqueness :-
+
+				Suppose there're two classmates who have same name : Kirti
+
+				let names = {"Kirti":"Sharma", "Kirti":"Thakur"}
+				=> console.log(names["Kirti"]); = "Thakur"  (Last Declared)
+
+				But after using Symbols :
+
+					let s1 = Symbol("Kirti Sharma");
+					let s2 = Symbol("Kirti Thakur");
+					let names = {[s1]:"Sharma", [s2]:"Thakur"}
+
+					=> console.log(names[s1]) = "Sharma"
+					=> console.log(names[s2]) = "Thakur"
+			
+			2. Privacy :-
+
+				let names2 = {[s1]:"Sharma", [s2]:"Thakur", "John":"Doe", "xyz":"abc"}
+				for(let key in names2){
+					console.log(key);
+
+				}
+
+				=> "John" ; "xyz"   (Hides "Kirti Sharma" & "Kirti Thakur")
+
+
+FUNCTIONS : syntax - function function_name(parameter) 
+	
+	# Function Definition :-
+	
+	... Hoisting (call before declaration)
+
+		function sum(a, b) {
+			console.log(a + b);
+		}
+
+		=> sum(10, 20) = 20
+		=> typeof sum = "function"
+		=> sum instanceof Object = "true"
+
+	# Function Expression :- (Anonymus Function)
+
+	... No Hoisting
+
+		var sum = function(a, b){
+			console.log(a + b)
+		}
+
+		=> sum(10, 20) = 20
+
+	# IIFE :- (Immidiately Invoked Function Expression)
+
+	... where you don't want to save the function & use any space and just want to run it immediately.
+
+		(function sum(a, b) {
+			console.log(a + b);
+		})(10, 20);
+
+		=> 25
+
+
+
+LOOSE v/s STRICT COMPARISIONS :
+
+	var a = 1
+	var b = "1"
+
+	=> a==b : "true"  (ignored datatypes)  - Loose comparision
+
+	=> a===b : "false"  (consider datatypes) - Strict comparision
+
+
+
+-------------------------------------- String Basics --------------------------------------
+
+var url = "facebook.com"
+
+Slicing => url[0] = "f" ; url[1] = "a"
+Length  => url.length = 12
+
+const preurl = "www"
+
+Cncatination => preurl + url = "wwwfacebook.com"
+				 preurl + "." + "url" = "www.facebook.com"
+
+
+
+INBUILT STRING FUNCTIONS :
+
+	=> url.includes(".com") = "true"
+	=> url.includes("www") = "false"
+
+	=> url.lastIndexOf("f") = 0
+	=> url.lastIndexOf("o") = 10   (Last index of repititive character)
+	=> url.indexOf("o") = 5   (Index of first occured repititive character)
+
+	=> url.startsWith("fa") = "true"
+
+	=> let sub = url.substr(2, 5) => sub = "ceboo"   (Slicing)
+	=> 	   sub = url.sub(2) => sub = "cebook.com"
+
+
+
+-------------------------------------- "use strict" --------------------------------------
+
+# Whenever there's any Error occurs in JS, it silently avoids the Error and doesn't let us know about it.
+# Use Strict is used for maintaining JS code in Strict mode.
+# Can be insert in the top of a file or in a perticular function.
+# ALWAYS USE THIS.
+
+"use strict";	(just write this in the top or inside a function and we're good to go - inverted commas included)
