@@ -1,0 +1,84 @@
+------------------------------------------------ For loop ------------------------------------------------
+
+let i;
+
+for(i=0; i<5 ; i++){
+	document.write("Hello World");
+}
+
+
+
+------------------------------------------------ while loop ------------------------------------------------
+
+let i =0;
+
+while(i<=5) {
+	document.write("Hello World");
+	i++;
+}
+
+
+
+ ------------------------------------------------ do-while loop ------------------------------------------------
+
+do {
+	print("Hello World");
+	i++;
+} while(i<=5);
+
+
+
+------------------------------------------------ for...in loop ------------------------------------------------
+
+var obj = [1,2,3,4];
+
+for(i in onj) {
+	document.write(i);
+}
+
+OUTPUT : 0 1 2 3 -> key(array counting here & applicable for everything.)
+
+
+
+------------------------------------------------ for...of loop ------------------------------------------------
+
+var arr = [1,2,3,4];
+for(val of arr) {
+	document.write(val);
+}
+
+OUTPUT : 1 2 3 4 -> actual values (Only applicabele for iterable things like array.)
+
+
+
+------------------------------------------------ CONDITIONALS ------------------------------------------------
+
+# if else
+
+	let num = 5;
+	if(num%2==0) {
+		document.write("even number");
+	} else {
+		document.write("odd number");
+	}
+	
+
+# Switch case
+	
+	var fruit = "Papayas";
+	switch(fruit) {
+		case "Orange":
+			console.log("Oranges are Rs 50/kg.");
+			break;
+	
+		case "Mangoes":
+			console.log("Mangoes are Rs 100/kg.");
+			break;
+
+		case "Papayas":
+			console.log("Papayas are Rs 40/kg.");
+			break;
+
+		default:
+			console.log("Sorry we are out of fruits.");
+	}
