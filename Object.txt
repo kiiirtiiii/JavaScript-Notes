@@ -1,0 +1,54 @@
+------------------------------------------------ Object Creation ------------------------------------------------
+
+# Method-1:
+
+function Student(name, age) {
+	this.name = name;
+	this.age = age;
+	this.printInfo = function() {
+			console.log("Student's name : "+this.name+" Age : "+this.age);
+	};
+}
+
+var student = new Student("kirti", 19);
+
+student.printInfo();  => Student's name : kirti Age : 19
+
+
+
+# Method-2 (OBJECT LITERALS):
+
+var Employee = {
+	"name": "kirti",
+	"age": 19,
+	"printInfo": function() {
+		console.log("Employee's name: "+this.name+" Employee's age: "+this.age)
+	} 
+};
+
+Employee.printInfo();  => Employee's name: kirti Employee's age: 19
+
+
+
+# Method-3 (Object.create):
+
+var a = Object.create({ name: "xyz", age: 77 });
+
+console.log(a.name);  => "xyz"
+
+
+
+
+### Note1 : Object literal makes Shallow copy
+			
+		Shallow copy - When we do something like :
+						var obj = {"xyz" : "abc"};
+						var obj2 = obj;
+
+						then obj2 and obj actually point on the same memory address instead of get copied. obj's memmory address get copied in abj2.
+
+
+### Note2 : For making a Deep copy we use - "assign(target, source)"
+		
+		var ab = {a:1, b:3};
+		var ab2 = Object.assign({}, ab);
